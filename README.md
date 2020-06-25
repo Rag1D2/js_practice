@@ -10,7 +10,7 @@
 
 # Compiler vs Polyfill
 
-If you write more modern (newer) JavaScript, there is no guarantee that every browser would be able to read the code. Some browsers may not have implemented the newer features yet. (Then your breaks, which sucks)
+If you write more modern (newer) JavaScript, there is no guarantee that every browser would be able to read the code. Some browsers may not have implemented the newer features yet. (Then your code breaks, which sucks)
 
 #### Compiler
 
@@ -73,7 +73,21 @@ if we run
 matt = 1
 ```
 
-We get back an error because "matt" has not been defined
+We get back an error because "matt" has not been defined.
+
+Another way this can help us is in another example.
+
+```
+let theVal = 0;
+
+thVal = 1;
+
+if(theVal > 0) {
+  console.log("Hello!");
+}
+```
+
+This will return an error because we did not declare "thVal" so it actually saves us from making an error and creating a new variable.
 
 "use strict"; will also not allow you to use words that are reserved for future versions of JS
 
@@ -122,3 +136,124 @@ console.log(a)
 
 The console logs "Object {moo: false}"
 So we added the property and its value to the object and that property now exists within that object even outside of the function scope.
+
+# What are Rest Operators?
+
+Introduced in ES6.
+
+It compresses a number of single elements into a single array.
+
+- Its used primarily in function signatures
+
+```
+function sum(a, b) {
+  return  a + b;
+}
+
+sum(1, 2);
+// returns 3
+
+sum(1, 2, 3, 4);
+// What will this return?
+```
+
+It actually returns 3 as well. The function takes in the first two arguments and ignores the rest.
+
+```
+function login (...options) {
+  console.log(options);
+}
+login('facebook', 1, 2, 3, 4);
+```
+
+The three decimals that occur before the "options" argument turn it into an array with all of the arguments that are declared in the console.log
+
+```
+function login(method, ...options) {
+  console.log(method);
+  console.log(options);
+}
+login("facebook", 1, 2, 3, 4);
+```
+
+This will log:
+
+```
+"facebook"
+[1, 2, 3, 4]
+```
+
+So the rest operator allowed us to separate the arguments into two arrays and console.log them
+individually.
+
+The rest operator MUST be the last parameter in the function argument list.
+Thats why it is called the "rest" operator.
+
+```
+function login(method, moo, ...options) {
+  console.log(method);
+  console.log(options);
+}
+login("facebook", 1, 2, 3, 4);
+```
+
+This will return:
+
+```
+"facebook"
+[2, 3, 4]
+```
+
+So here, the "moo" parameter has replaced the number: 1 in the array.
+This means that the "rest" leaves 2, 3, and 4
+
+So the rest operator compresses single elements into an array and then allows us to use array methods to manipulate that array.
+
+# What is the Spread Operator?
+
+Similar to the rest operator, the spread operator uses the same triple decimal command, but the context in which we use it, changes the effect.
+
+A spread operator takes a single array value and explodes it into separate single values
+
+```
+var ar1 = [1, 2, 3];
+var ar2 = [...ar1, 4, 5, 6];
+var ar3 = [4, 5, ...ar1, 6];
+
+clg(ar1);
+clg(ar2);
+clg(ar3);
+```
+
+This returns:
+
+```
+[1, 2, 3]
+[1, 2, 3, 4, 5, 6]
+[4, 5, 1, 2, 3, 6]
+```
+
+So we can place the spread operator anywhere and it still works.
+
+We can also manipulate an array
+
+```
+let ar1 = [4, 5, 6];
+let ar2 = [...ar1];
+ar1[0] = -1;
+
+clg(ar1);
+clg(ar2);
+```
+
+This returns
+
+```
+[-1, 5, 6]
+[4, 5, 6]
+```
+
+Because the spread operator is making a copy of ar1, not mirroring its value.
+So later changes made to an array are not reflected in a spread operator.
+
+# What are Template Strings?
