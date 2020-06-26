@@ -257,3 +257,122 @@ Because the spread operator is making a copy of ar1, not mirroring its value.
 So later changes made to an array are not reflected in a spread operator.
 
 # What are Template Strings?
+
+New feature in ES6.
+
+One feature of template srings are multi-line strings.
+Let's take the string:
+
+```
+var msg = "hello my name is matt"
+clg(msg);
+```
+
+In the old ways, we would make this a multi-line string like this:
+
+```
+var msg = "my\nname\nis\nmatt"
+clg(msg);
+```
+
+This returns:
+
+```
+my
+name
+is
+matt
+```
+
+But with template strings we use back-ticks (``) and now we can use apostrophes (') and double quotes ("") in our string without error
+
+```
+var msg = `his name's "matt"`
+clg(msg)
+```
+
+the console.log returns:
+
+```
+his name's "matt"
+```
+
+Also, our multi-line string is now written like this:
+
+```
+var msg = `
+hello
+my
+name
+is
+matt`
+
+clg(msg);
+```
+
+and this would return the same multi-line log as above:
+
+```
+hello
+my
+name
+is
+matt
+```
+
+Another feature of template strings is called expression interpolation or variable interpolation.
+
+This allows us to embed variables or other code within our template string.
+
+```
+let name = "matt"
+let place = "world"
+
+let msg = `hello ${place} my name is ${name}`;
+clg(msg);
+```
+
+This returns:
+
+```
+hello world my name is matt
+```
+
+and now if we change the value of either variable, it is immediately reflected in our template string
+
+We can also put tags on our template strings. One famous example of this is styled components in React.
+For example:
+
+```
+const Button = styled.a`
+                display: inline-block;
+                border-radius: 3px;
+                `
+```
+
+So this bit of code styles our button during its creation using the template string. The "styled.a" is called a template tag.
+
+Another famous use of template tags is in accessibility
+we can use template tags to change the currency label of someones bank account depending on where they are in the world.
+
+## So what are template tags?
+
+Using our React styled component example above, we essentially created an anchor tag with the stylings inside of the template string and now, any element with that tag attached will be given the stylings of that tag
+
+```
+h1`asim` //<h1>asim</h1>
+```
+
+# Different Types In JS
+
+the different types are:
+
+```
+Boolean
+String
+Number
+Null
+Undefined
+
+Object
+```
