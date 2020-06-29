@@ -376,3 +376,37 @@ Undefined
 
 Object
 ```
+
+We can check for the type of each in the console.
+
+[type of](typeof.png)
+
+Notice that "null" comes back as an object. this is one of the errors in JS
+
+This is part of how JS is a dynamic typed language , not a static typed language, like Java
+
+```
+STRINGS
+<!-- A String in Java -->
+String a = 'moo';
+```
+
+So we declare the variable a string before giving it a name or value. If we later tried to change the type of variable "a"
+
+```
+a = 1
+```
+
+we get back an error letting us know that the value of "a" can ONLY be a string.
+
+In JavaScript, the language is typed dynamically.
+
+So the types of variables are determined at runtime, not pre-determined by the language itself...
+
+```
+let a = 'moo';
+typeof(a) // "string"
+
+a = 1
+typeof(a) // "number"
+```
